@@ -93,6 +93,7 @@ export default function AddTask() {
         })
       }
       </ScrollView>
+      <TaskInputField addTask={addTask}/>
     </View>
   );
 }

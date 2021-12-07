@@ -55,7 +55,7 @@ function App(props) {
   const [signinError, setSigninError ] = useState()
   const [ data, setData ] = useState()
   const[ userId, setUserId ] = useState()
-  const[ lisItems, setListItems ] = useState()
+  const[ itemList, setItemList ] = useState()
 
   
 
@@ -157,7 +157,7 @@ function App(props) {
       transform()
     })
   }
-  transform =() => {
+   transform =() => {
     console.log("porfavor",(data))
 let item ={}
 const itemList = []
@@ -173,7 +173,7 @@ data.forEach(element => {
   itemList.push(item)
 });
 console.log(itemList)
-setListItems(itemList)
+setItemList(itemList)
 
   }
 
@@ -206,7 +206,7 @@ setListItems(itemList)
           headerRight: (props) => <Signout {...props} handler={SignoutHandler} />
         }}>
           { (props) => 
-          <Home {...props} auth={auth} add={createTask} user={user} lisItems={lisItems} /> }
+          <Home {...props} auth={auth} add={createTask} user={user} itemList={itemList} /> }
         </Stack.Screen>
 
         <Stack.Screen name="AddTask" options={{

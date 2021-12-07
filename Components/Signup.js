@@ -111,10 +111,10 @@ import { Feedback } from './Feedback';
                 size="sm"
                 m={2}
                 _light={{
-                  color: "black",
+                  color: "#3E3364",
                 }}
                 _dark={{
-                  color: "gray.300",
+                  color: "#3E3364",
                 }}
               />
             }
@@ -123,10 +123,10 @@ import { Feedback } from './Feedback';
 
             placeholder="Username"
             _light={{
-              placeholderTextColor: "blueGray.400",
+              placeholderTextColor: "#CEAA9A",
             }}
             _dark={{
-              placeholderTextColor: "blueGray.50",
+              placeholderTextColor: "#CEAA9A",
             }}
 
           />
@@ -144,10 +144,10 @@ import { Feedback } from './Feedback';
                 size="sm"
                 m={2}
                 _light={{
-                  color: "black",
+                  color: "#3E3364",
                 }}
                 _dark={{
-                  color: "gray.300",
+                  color: "#3E3364",
                 }}
               />
             }
@@ -156,10 +156,10 @@ import { Feedback } from './Feedback';
 
             placeholder="Email"
             _light={{
-              placeholderTextColor: "blueGray.400",
+              placeholderTextColor: "#CEAA9A",
             }}
             _dark={{
-              placeholderTextColor: "blueGray.50",
+              placeholderTextColor: "#CEAA9A",
             }}
 
           />
@@ -177,10 +177,10 @@ import { Feedback } from './Feedback';
                 size="sm"
                 m={2}
                 _light={{
-                  color: "black",
+                  color: "#3E3364",
                 }}
                 _dark={{
-                  color: "gray.300",
+                  color: "#3E3364",
                 }}
               />
             }
@@ -189,10 +189,10 @@ import { Feedback } from './Feedback';
             secureTextEntry={true}
             placeholder="Password"
             _light={{
-              placeholderTextColor: "blueGray.400",
+              placeholderTextColor: "#CEAA9A",
             }}
             _dark={{
-              placeholderTextColor: "blueGray.50",
+              placeholderTextColor: "#CEAA9A",
             }}
           />
         </View>
@@ -209,10 +209,10 @@ import { Feedback } from './Feedback';
                 size="sm"
                 m={2}
                 _light={{
-                  color: "black",
+                  color: "#3E3364",
                 }}
                 _dark={{
-                  color: "gray.300",
+                  color: "#3E3364",
                 }}
               />
             }
@@ -222,10 +222,10 @@ import { Feedback } from './Feedback';
             secureTextEntry={true}
             placeholder="Confirm Password"
             _light={{
-              placeholderTextColor: "blueGray.400",
+              placeholderTextColor: "#CEAA9A",
             }}
             _dark={{
-              placeholderTextColor: "blueGray.50",
+              placeholderTextColor: "#CEAA9A",
             }}
           />
         </View>
@@ -245,11 +245,11 @@ import { Feedback } from './Feedback';
       
       {/* Line */}
       <View style={styles.lineStyle}>
-        <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+        <View style={{flex: 1, height: 1, backgroundColor: '#3E3364'}} />
         <View>
           <Text style={{width: 50, textAlign: 'center'}}>Or</Text>
         </View>
-        <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+        <View style={{flex: 1, height: 1, backgroundColor: '#3E3364'}} />
       </View>
 
       {/* Box */}
@@ -259,10 +259,10 @@ import { Feedback } from './Feedback';
         style={{height:80, width:80}} 
         shadow={3}
         _light={{
-          backgroundColor: "gray.50",
+          backgroundColor: "#CEAA9A",
         }}
         _dark={{
-          backgroundColor: "gray.700",
+          backgroundColor: "#CEAA9A",
         }}
       >
         <AspectRatio ratio={1 / 1}>
@@ -280,10 +280,10 @@ import { Feedback } from './Feedback';
         style={styles.imageStyle}
         shadow={3}
         _light={{
-          backgroundColor: "gray.50",
+          backgroundColor: "#3E3364",
         }}
         _dark={{
-          backgroundColor: "gray.700",
+          backgroundColor: "#3E3364",
         }}
       >
         <AspectRatio ratio={1 / 1}>
@@ -302,10 +302,10 @@ import { Feedback } from './Feedback';
         style={styles.imageStyle}
         shadow={3}
         _light={{
-          backgroundColor: "gray.50",
+          backgroundColor: "#CEAA9A",
         }}
         _dark={{
-          backgroundColor: "gray.700",
+          backgroundColor: "#CEAA9A",
         }}
       >
         <AspectRatio ratio={1 / 1}>
@@ -324,10 +324,10 @@ import { Feedback } from './Feedback';
         style={styles.imageStyle}
         shadow={3}
         _light={{
-          backgroundColor: "gray.50",
+          backgroundColor: "#3E3364",
         }}
         _dark={{
-          backgroundColor: "gray.700",
+          backgroundColor: "#3E3364",
         }}
       >
         <AspectRatio ratio={1 / 1}>
@@ -367,18 +367,22 @@ const styles = StyleSheet.create({
     marginTop:100,
     fontSize:30,
     fontWeight:'bold',
+    color: "#3E3364",
   },
   Middle:{
     alignItems:'center',
     justifyContent:'center',
+    color: "#3E3364",
   },
   text2:{
     flexDirection:'row',
     justifyContent:'center',
-    paddingTop:5
+    paddingTop:5,
+    color: "#3E3364",
   },
   signupText:{
-    fontWeight:'bold'
+    fontWeight:'bold',
+    color: "#3E3364",
   },
   emailField:{
     marginTop:30,
@@ -399,10 +403,11 @@ const styles = StyleSheet.create({
     marginRight:15
   },
   buttonDesign:{
-    backgroundColor:'#026efd'
+    backgroundColor:'#3E3364'
+  
   },
   buttonDesignDisable:{
-    backgroundColor:'red'
+    backgroundColor:'#CEAA9A'
   },
   lineStyle:{
     flexDirection:'row',

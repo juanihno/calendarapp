@@ -13,7 +13,8 @@ export function Signout( props ) {
 
 const styles = StyleSheet.create({
   signoutText: {
-    color: "black",
+    color:'#3E3364'
+
   },
 })
   

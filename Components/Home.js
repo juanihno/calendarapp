@@ -49,13 +49,16 @@ const timeToString = (time) => {
 
   const [dateString, setDateString] = useState();
   //const [items, setItems] = useState({});
+  //setItems(props.listItems)
 
   const items={
-    '2017-05-22': [{name: 'item 1 - any js object'}],
-    '2017-05-23': [{name: 'item 2 - any js object', height: 80}],
-    '2017-05-24': [],
-    '2017-05-25': [{name: 'item 3 - any js object'}, {name: 'any js object'}]
-  };
+    '2017-05-20': [{name: 'Meetin Juan'}, {name: 'any js object'}],
+
+     '2017-05-23': [{name: 'Ana Bday', height: 80}, {name: 'Soccer match'}],
+     '2017-05-24': [{name: 'Dani bday'}],
+     '2017-05-25': [{name: 'Go for a run'}, {name: 'Cheescake'}, {name: 'Hala Madrid'}],
+
+   };
 
   
 
@@ -81,6 +84,8 @@ const timeToString = (time) => {
      const data={id: id, name: task, dateString: dateString, status: false}
 
      {props.add('userTasks', data)}
+     console.log("userTasks",props.itemList)
+     
      
 
      
@@ -134,7 +139,7 @@ const timeToString = (time) => {
                 alignItems: 'center',
               }}>
               <Text>{item.name}</Text>
-              <TouchableOpacity onPress={() => navigation.navigate("EditTask")}><Avatar.Text label="+" /></TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate("EditTask")}><Avatar.Text label="x" /></TouchableOpacity>
              
             </View>
           </Card.Content>
