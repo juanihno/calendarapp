@@ -97,6 +97,8 @@ function App(props) {
   
   
   const SigninHandler = ( email, password ) => {
+    setSignupError(null)
+
     signInWithEmailAndPassword( FBauth, email, password )
     .then( (userCredential) => {
       setUser(userCredential.user)
@@ -158,8 +160,10 @@ function App(props) {
     })
   }
    transform =() => {
-    console.log("porfavor",(data))
+    //console.log("porfavor",(data))
 let item ={}
+//const itemListObj = {}
+
 const itemList = []
 data.forEach(element => {
   item={
@@ -171,8 +175,12 @@ data.forEach(element => {
     }
   }
   itemList.push(item)
+  //itemListObj.push(itemList)
+
 });
-console.log(itemList)
+console.log("this is the itemlist ",itemList)
+//console.log("this is the itemlistOBJ ",itemListObj)
+
 setItemList(itemList)
 
   }

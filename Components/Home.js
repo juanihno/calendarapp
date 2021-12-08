@@ -52,6 +52,7 @@ const timeToString = (time) => {
   //setItems(props.listItems)
 
   const items={
+    
     '2017-05-20': [{name: 'Meetin Juan'}, {name: 'any js object'}],
 
      '2017-05-23': [{name: 'Ana Bday', height: 80}, {name: 'Soccer match'}],
@@ -60,7 +61,7 @@ const timeToString = (time) => {
 
    };
 
-  
+  //const items= props.itemList;
 
 
   useEffect( () => {
@@ -84,8 +85,11 @@ const timeToString = (time) => {
      const data={id: id, name: task, dateString: dateString, status: false}
 
      {props.add('userTasks', data)}
-     console.log("userTasks",props.itemList)
-     
+     //console.log("userTasks",props.itemList)
+     console.log("los items son", items);
+     //console.console.log("el item individual es", item.name);
+
+
      
 
      
