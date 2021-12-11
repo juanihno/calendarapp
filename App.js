@@ -66,7 +66,7 @@ function App(props) {
         setAuth(true) 
         setUser(user)
         // console.log( 'authed')
-      if( !data ) { getData() }
+      if( !data ) { getUserEvents() }
           }
       else {
         setAuth(false)
@@ -133,58 +133,91 @@ function App(props) {
   const createTask = async ( collection , data ) => {
     //adding data to a collection with automatic id
     //const ref = await addDoc( collection(FSdb, FScollection ), data )
-    const ref = await setDoc( doc( FSdb, `usertasks/${user.uid}/documents/${ new Date().getTime() } }`), data )
+    const ref = await setDoc( doc( FSdb, `usertasks/${user.uid}/events/${ data.dateString }`), data )
     //console.log( ref.id )
   }
   /*const createTask = async (collection , data) => {
     await setDoc(
       doc(firestore, collection, data.id, 'tasks', 'task'), data)
   } */
-  const getData = () => {
-     //console.log("que es ",user.uid)
-    const FSquery = query( collection( FSdb, `usertasks/${user.uid}/documents`) )
-    const unsubscribe = onSnapshot( FSquery, ( querySnapshot ) => {
-      let FSdata = []
-      querySnapshot.forEach( (doc) => {
-        console.log("probando id", doc.id)
-        console.log("probando name", doc.name)
+//   const getData = () => {
+//      //console.log("que es ",user.uid)
+//     const FSquery = query( collection( FSdb, `usertasks/${user.uid}/events`) )
+//     const unsubscribe = onSnapshot( FSquery, ( querySnapshot ) => {
+//       let FSdata = []
+//       querySnapshot.forEach( (doc) => {
+//         console.log("probando id", doc.id)
 
-        let item = {}
-        item = doc.data()
-        item.id = doc.id
-        FSdata.push( item )
-      })
-      setData( FSdata )
-      console.log(FSdata)
-      transform()
-    })
+//         let item = {}
+//         item = doc.data()
+//         item.id = doc.id
+//         FSdata.push( item )
+//       })
+//       setData( FSdata )
+//       console.log(FSdata)
+//       transform()
+//     })
+//   }
+//    transform =() => {
+//     //console.log("porfavor",(data))
+// let item ={}
+// //const itemListObj = {}
+
+// const itemList = []
+// data.forEach(element => {
+//   item={
+//     [element.dateString]:{
+//       id : element.id,
+//       name : element.name,
+//       status : element.status
+
+//     }
+//   }
+//   itemList.push(item)
+//   //itemListObj.push(itemList)
+
+// });
+// console.log("this is the itemlist ",itemList)
+// //console.log("this is the itemlistOBJ ",itemListObj)
+
+// setItemList(itemList)
+
+//   }
+const getUserEvents = () => {
+  const FSquery = query( collection( FSdb, `usertasks/${user.uid}/events`) )
+  const unsubscribe = onSnapshot( FSquery, ( querySnapshot ) => {
+  // get all documents (using the date as id) from user's events collection
+  let eventData = {}
+  querySnapshot.forEach( (doc) => {
+    console.log("testing id", doc.id)
+
+  let arr = []
+  // the id of the document is the date for the event
+  eventData[ doc.id ] = arr
+  console.log("testing array", arr)
+
+  })
+  // now we get the collection of events for each day
+  let eventsOfTheDay = []
+  const eventKeys = Object.keys( eventData )
+  eventKeys.map( async (eventDate) => {
+  const events = await getDocs( FSdb, `users/${user.uid}/events/${eventDate}/dayEvents`)
+  events.forEach( (doc) => {
+  let event = doc.data()
+  event.id = doc.id
+  eventsOfTheDay.push( event )
+  })
+  
+  eventData[ eventDate ] = eventsOfTheDay
+  console.log("this are the eventsoftheday", eventsOfTheDay)
+  console.log("this is eventdata", eventData)
+
+  })
+  // now we can set it into a state that can be passed to components to be consumed by the calendar
+  // eg setEvents( eventData )
+  })
   }
-   transform =() => {
-    //console.log("porfavor",(data))
-let item ={}
-//const itemListObj = {}
-
-const itemList = []
-data.forEach(element => {
-  item={
-    [element.dateString]:{
-      id : element.id,
-      name : element.name,
-      status : element.status
-
-    }
-  }
-  itemList.push(item)
-  //itemListObj.push(itemList)
-
-});
-console.log("this is the itemlist ",itemList)
-//console.log("this is the itemlistOBJ ",itemListObj)
-
-setItemList(itemList)
-
-  }
-
+  
 
   return (
     <Stack.Navigator >
