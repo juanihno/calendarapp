@@ -10,16 +10,16 @@ import { Feedback } from './Feedback';
 
 
 
- function Signin(props) {
-    const navigation = useNavigation();
-    const [email,setEmail] = useState()
-    const [password, setPassword] = useState()
-   
-    useEffect( () => {
-        if( props.auth === true ) {
-          navigation.reset({ index: 0, routes: [ {name: 'Home'} ] })
-        }
-      }, [props.auth] )
+function Signin(props) {
+  const navigation = useNavigation();
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+
+  useEffect(() => {
+    if (props.auth === true) {
+      navigation.reset({ index: 0, routes: [{ name: 'Home' }] })
+    }
+  }, [props.auth])
 
   return (
     <View style={styles.container}>
@@ -33,7 +33,7 @@ import { Feedback } from './Feedback';
 
       {/* Username or Email Input Field */}
       <View style={styles.buttonStyle}>
-        
+
         <View style={styles.emailInput}>
           <Input
             InputLeftElement={
@@ -50,7 +50,7 @@ import { Feedback } from './Feedback';
               />
             }
             variant="outline"
-            onChangeText={ (val) => setEmail(val) } 
+            onChangeText={(val) => setEmail(val)}
 
 
             placeholder="Username or Email"
@@ -67,7 +67,7 @@ import { Feedback } from './Feedback';
 
       {/* Password Input Field */}
       <View style={styles.buttonStyleX}>
-        
+
         <View style={styles.emailInput}>
           <Input
             InputLeftElement={
@@ -84,7 +84,7 @@ import { Feedback } from './Feedback';
               />
             }
             variant="outline"
-            onChangeText={ (val) => setPassword(val) } 
+            onChangeText={(val) => setPassword(val)}
 
             secureTextEntry={true}
             placeholder="Password"
@@ -100,9 +100,9 @@ import { Feedback } from './Feedback';
 
       {/* Button */}
       <View style={styles.buttonStyle}>
-        <Button  style={styles.buttonDesign}
-        onPress={ () => { props.handler( email,password ) }}>
-            LOGIN
+        <Button style={styles.buttonDesign}
+          onPress={() => { props.handler(email, password) }}>
+          LOGIN
         </Button>
         <Feedback message={props.error} />
 
@@ -110,102 +110,102 @@ import { Feedback } from './Feedback';
 
       {/* Line */}
       <View style={styles.lineStyle}>
-        <View style={{flex: 1, height: 1, backgroundColor: '#3E3364'}} />
+        <View style={{ flex: 1, height: 1, backgroundColor: '#3E3364' }} />
         <View>
-          <Text style={{width: 50, textAlign: 'center'}}>Or</Text>
+          <Text style={{ width: 50, textAlign: 'center' }}>Or</Text>
         </View>
-        <View style={{flex: 1, height: 1, backgroundColor: '#3E3364'}} />
+        <View style={{ flex: 1, height: 1, backgroundColor: '#3E3364' }} />
       </View>
 
       {/* Box */}
       <View style={styles.boxStyle}>
-      <Box 
-        onPress={() => navigation.navigate("#")}  // for navigation 
-        style={{height:80, width:80}} 
-        shadow={3}
-        _light={{
-          backgroundColor: "#CEAA9A",
-        }}
-        _dark={{
-          backgroundColor: "#CEAA9A",
-        }}
-      >
-        <AspectRatio ratio={1 / 1}>
-          <Image
-            roundedTop="lg"
-            source={{
-              uri: "https://www.transparentpng.com/thumb/google-logo/colorful-google-logo-transparent-clipart-download-u3DWLj.png",
-            }}
-            alt="image"
-          />
-        </AspectRatio>
-      </Box>
-      <Box 
-        onPress={() => navigation.navigate("#")}  // for navigation
-        style={styles.imageStyle}
-        shadow={3}
-        _light={{
-          backgroundColor: "#3E3364",
-        }}
-        _dark={{
-          backgroundColor: "#3E3364",
-        }}
-      >
-        <AspectRatio ratio={1 / 1}>
-          <Image
-            
-            roundedTop="lg"
-            source={{
-              uri: "https://www.transparentpng.com/thumb/facebook-logo-png/photo-facebook-logo-png-hd-25.png",
-            }}
-            alt="image"
-          />
-        </AspectRatio>
-      </Box>
-      <Box 
-        onPress={() => navigation.navigate("#")}  // for navigation
-        style={styles.imageStyle}
-        shadow={3}
-        _light={{
-          backgroundColor: "#CEAA9A",
-        }}
-        _dark={{
-          backgroundColor: "#CEAA9A",
-        }}
-      >
-        <AspectRatio ratio={1 / 1}>
-          <Image
-            
-            roundedTop="lg"
-            source={{
-              uri: "https://www.transparentpng.com/thumb/twitter/bird-twitter-socialmedia-icons-png-5.png",
-            }}
-            alt="image"
-          />
-        </AspectRatio>
-      </Box>
-      <Box 
-        onPress={() => navigation.navigate("#")}  // for navigation
-        style={styles.imageStyle}
-        shadow={3}
-        _light={{
-          backgroundColor: "#3E3364",
-        }}
-        _dark={{
-          backgroundColor: "#3E3364",
-        }}
-      >
-        <AspectRatio ratio={1 / 1}>
-          <Image
-            
-            roundedTop="lg"
-            source={{
-              uri: "https://www.transparentpng.com/thumb/apple-logo/RRgURB-apple-logo-clipart-hd.png",
-            }}
-            alt="image"
-          />
-        </AspectRatio>
-      </Box>
+        <Box
+          onPress={() => navigation.navigate("#")}  // for navigation 
+          style={{ height: 80, width: 80 }}
+          shadow={3}
+          _light={{
+            backgroundColor: "#CEAA9A",
+          }}
+          _dark={{
+            backgroundColor: "#CEAA9A",
+          }}
+        >
+          <AspectRatio ratio={1 / 1}>
+            <Image
+              roundedTop="lg"
+              source={{
+                uri: "https://www.transparentpng.com/thumb/google-logo/colorful-google-logo-transparent-clipart-download-u3DWLj.png",
+              }}
+              alt="image"
+            />
+          </AspectRatio>
+        </Box>
+        <Box
+          onPress={() => navigation.navigate("#")}  // for navigation
+          style={styles.imageStyle}
+          shadow={3}
+          _light={{
+            backgroundColor: "#3E3364",
+          }}
+          _dark={{
+            backgroundColor: "#3E3364",
+          }}
+        >
+          <AspectRatio ratio={1 / 1}>
+            <Image
+
+              roundedTop="lg"
+              source={{
+                uri: "https://www.transparentpng.com/thumb/facebook-logo-png/photo-facebook-logo-png-hd-25.png",
+              }}
+              alt="image"
+            />
+          </AspectRatio>
+        </Box>
+        <Box
+          onPress={() => navigation.navigate("#")}  // for navigation
+          style={styles.imageStyle}
+          shadow={3}
+          _light={{
+            backgroundColor: "#CEAA9A",
+          }}
+          _dark={{
+            backgroundColor: "#CEAA9A",
+          }}
+        >
+          <AspectRatio ratio={1 / 1}>
+            <Image
+
+              roundedTop="lg"
+              source={{
+                uri: "https://www.transparentpng.com/thumb/twitter/bird-twitter-socialmedia-icons-png-5.png",
+              }}
+              alt="image"
+            />
+          </AspectRatio>
+        </Box>
+        <Box
+          onPress={() => navigation.navigate("#")}  // for navigation
+          style={styles.imageStyle}
+          shadow={3}
+          _light={{
+            backgroundColor: "#3E3364",
+          }}
+          _dark={{
+            backgroundColor: "#3E3364",
+          }}
+        >
+          <AspectRatio ratio={1 / 1}>
+            <Image
+
+              roundedTop="lg"
+              source={{
+                uri: "https://www.transparentpng.com/thumb/apple-logo/RRgURB-apple-logo-clipart-hd.png",
+              }}
+              alt="image"
+            />
+          </AspectRatio>
+        </Box>
       </View>
       <StatusBar style="auto" />
     </View>
@@ -215,9 +215,9 @@ import { Feedback } from './Feedback';
 export default (props) => {
   return (
     <NativeBaseProvider>
-     
-        <Signin {...props} />
-      
+
+      <Signin {...props} />
+
     </NativeBaseProvider>
   )
 }
@@ -229,66 +229,66 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   LoginText: {
-    marginTop:100,
-    fontSize:30,
-    fontWeight:'bold',
-    color:'#3E3364'
+    marginTop: 100,
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#3E3364'
   },
-  Middle:{
-    alignItems:'center',
-    justifyContent:'center',
-    color:'#3E3364'
+  Middle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#3E3364'
 
   },
-  text2:{
-    flexDirection:'row',
-    justifyContent:'center',
-    paddingTop:5, 
-    color:'#3E3364'
+  text2: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingTop: 5,
+    color: '#3E3364'
 
   },
-  signupText:{
-    fontWeight:'bold',
-    color:'#3E3364'
+  signupText: {
+    fontWeight: 'bold',
+    color: '#3E3364'
   },
-  emailField:{
-    marginTop:30,
-    marginLeft:15
+  emailField: {
+    marginTop: 30,
+    marginLeft: 15
   },
-  emailInput:{
-    marginTop:10,
-    marginRight:5
+  emailInput: {
+    marginTop: 10,
+    marginRight: 5
   },
-  buttonStyle:{
-    marginTop:30,
-    marginLeft:15,
-    marginRight:15
+  buttonStyle: {
+    marginTop: 30,
+    marginLeft: 15,
+    marginRight: 15
   },
-  buttonStyleX:{
-    marginTop:12,
-    marginLeft:15,
-    marginRight:15
+  buttonStyleX: {
+    marginTop: 12,
+    marginLeft: 15,
+    marginRight: 15
   },
-  buttonDesign:{
-    backgroundColor:'#3E3364'
+  buttonDesign: {
+    backgroundColor: '#3E3364'
   },
-  lineStyle:{
-    flexDirection:'row',
-    marginTop:30,
-    marginLeft:15,
-    marginRight:15,
-    alignItems:'center'
+  lineStyle: {
+    flexDirection: 'row',
+    marginTop: 30,
+    marginLeft: 15,
+    marginRight: 15,
+    alignItems: 'center'
   },
-  imageStyle:{
-    width:80,
-    height:80,
-    marginLeft:20,
+  imageStyle: {
+    width: 80,
+    height: 80,
+    marginLeft: 20,
   },
-  boxStyle:{
-    flexDirection:'row',
-    marginTop:30,
-    marginLeft:15,
-    marginRight:15,
-    justifyContent:'space-around'
+  boxStyle: {
+    flexDirection: 'row',
+    marginTop: 30,
+    marginLeft: 15,
+    marginRight: 15,
+    justifyContent: 'space-around'
   },
 })

@@ -12,18 +12,16 @@ import { MaterialIcons } from '@expo/vector-icons'
 
 const TaskInputField = (props) => {
   const [task, setTask] = useState()
-  const [ validInput, setValidInput ] = useState(false)
+  const [validInput, setValidInput] = useState(false)
   const onTextChange = (text) => {
-        setTask( text )
-        if( text.length >= 3 ) 
-        { 
-          setValidInput(true)
-        }
-        else
-        {
-          setValidInput(false)
-        }
-      }
+    setTask(text)
+    if (text.length >= 3) {
+      setValidInput(true)
+    }
+    else {
+      setValidInput(false)
+    }
+  }
 
 
   const handleAddTask = (value) => {
@@ -44,10 +42,10 @@ const TaskInputField = (props) => {
         placeholder={'Write a task (minimun 3 characters)'}
         placeholderTextColor={'#fff'}
       />
-      <TouchableOpacity 
-      style={ (validInput) ? styles.button : styles.buttonDisabled } 
-      disabled={ (validInput) ? false : true }
-      onPress={() => handleAddTask(task)}>
+      <TouchableOpacity
+        style={(validInput) ? styles.button : styles.buttonDisabled}
+        disabled={(validInput) ? false : true}
+        onPress={() => handleAddTask(task)}>
         <View>
           <MaterialIcons name="add" size={24} color="black" />
         </View>
@@ -76,7 +74,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     height: 50,
     flex: 1,
-    
+
   },
   button: {
     height: 30,

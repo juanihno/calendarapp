@@ -4,7 +4,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 
 
 const TaskItem = (props) => {
-    console.log("hola, ", props)
+  console.log("hola, ", props)
   return (
     <View style={styles.container}>
       <View style={(props.task.status) ? styles.indexContainerDone : styles.indexContainer}>

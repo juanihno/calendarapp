@@ -1,25 +1,25 @@
-import React, {useEffect,useState} from 'react'
-import { Keyboard,View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useEffect, useState } from 'react'
+import { Keyboard, View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { Input, NativeBaseProvider, Button, Icon, Box, Image, AspectRatio } from 'native-base';
-import {Agenda} from 'react-native-calendars';
-import {Card, Avatar} from 'react-native-paper';
+import { Agenda } from 'react-native-calendars';
+import { Card, Avatar } from 'react-native-paper';
 import TaskInputField from './TaskInputField';
 
 
 // firebase
 
 
-import { 
-  initializeFirestore, 
-  getFirestore, 
-  setDoc, 
-  doc, 
-  addDoc, 
+import {
+  initializeFirestore,
+  getFirestore,
+  setDoc,
+  doc,
+  addDoc,
   collection,
-  query, 
-  where, 
-  onSnapshot, 
+  query,
+  where,
+  onSnapshot,
   Firestore, firestore
 } from 'firebase/firestore'
 
@@ -34,14 +34,14 @@ const timeToString = (time) => {
 
 
 
- export function Home ( props ) {
-
-
-  
+export function Home(props) {
 
 
 
-   
+
+
+
+
   const navigation = useNavigation()
   const [tasks, setTasks] = useState([]);
   //const [id, setId] = useState([]);
@@ -52,48 +52,48 @@ const timeToString = (time) => {
   //const [items, setItems] = useState({});
   //setItems(props.listItems)
 
-  const items={
-    
-    '2017-05-20': [{name: 'Meetin Juan'}, {name: 'any js object'}],
+  const items = {
 
-     '2017-05-23': [{name: 'Ana Bday', height: 80}, {name: 'Soccer match'}],
-     '2017-05-24': [{name: 'Dani bday'}],
-     '2017-05-25': [{name: 'Go for a run'}, {name: 'Cheescake'}, {name: 'Hala Madrid'}],
+    '2017-05-20': [{ name: 'Meetin Juan' }, { name: 'any js object' }],
 
-   };
+    '2017-05-23': [{ name: 'Ana Bday', height: 80 }, { name: 'Soccer match' }],
+    '2017-05-24': [{ name: 'Dani bday' }],
+    '2017-05-25': [{ name: 'Go for a run' }, { name: 'Cheescake' }, { name: 'Hala Madrid' }],
+
+  };
 
   //const items= props.itemList;
 
 
-  useEffect( () => {
-   if(!props.auth) {
-    navigation.reset({ index: 0, routes: [ {name: 'Signup'} ] })
-   }
+  useEffect(() => {
+    if (!props.auth) {
+      navigation.reset({ index: 0, routes: [{ name: 'Signup' }] })
+    }
   }, [props.auth])
-  
 
-  
-  
+
+
+
   const addTask = (task) => {
     //setTaskName=task
     if (task == null || dateString == null) return;
-    
+
 
     //setTask=task
     const id = new Date().getTime().toString()
 
-     //task = { id: id, name: task, dateString: dateString, status: false }
-     const data={id: id, name: task, dateString: dateString, status: false}
+    //task = { id: id, name: task, dateString: dateString, status: false }
+    const data = { id: id, name: task, dateString: dateString, status: false }
 
-     {props.add('userTasks', data)}
-     //console.log("userTasks",props.itemList)
-     console.log("los items son", items);
-     //console.console.log("el item individual es", item.name);
+    { props.add('userTasks', data) }
+    //console.log("userTasks",props.itemList)
+    console.log("los items son", items);
+    //console.console.log("el item individual es", item.name);
 
 
-     
 
-     
+
+
 
     setTasks([...tasks, task]);
     //console.log(tasks)
@@ -133,8 +133,8 @@ const timeToString = (time) => {
 
   const renderItem = (item) => {
     return (
-      <TouchableOpacity  style={{marginRight: 10, marginTop: 17} }
-      onPress={() => {navigation.navigate("#")}}>
+      <TouchableOpacity style={{ marginRight: 10, marginTop: 17 }}
+        onPress={() => { navigation.navigate("#") }}>
         <Card>
           <Card.Content>
             <View
@@ -153,19 +153,28 @@ const timeToString = (time) => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <Agenda
-        onDayPress={(day) => { setDateString(day.dateString);  console.log(dateString)}}
+        onDayPress={(day) => { setDateString(day.dateString); console.log(dateString) }}
+        // Initially selected day
+        selected={'2021-05-21'}
+        // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined
+        minDate={'2021-05-10'}
+        // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
+        maxDate={'2022-05-30'}
+        // Max amount of months allowed to scroll to the past. Default = 50
+        pastScrollRange={10}
+        // Max amount of months allowed to scroll to the future. Default = 50
+        futureScrollRange={10}
 
         items={items}
         //loadItemsForMonth={loadItems}
-        selected={'2017-05-21'}
         renderItem={renderItem}
       />
-      <TaskInputField addTask={addTask}/>
+      <TaskInputField addTask={addTask} />
     </View>
-    
+
   );
 
-  
-  }
+
+}

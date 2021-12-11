@@ -3,16 +3,16 @@ import { Text, View, StyleSheet, Button } from 'react-native'
 import Constants from 'expo-constants'
 import { useNavigation } from '@react-navigation/native'
 
-export function Splash (props) {
+export function Splash(props) {
   const navigation = useNavigation()
 
-  useEffect( () => {
-    const timer = setTimeout( () => navigation.navigate('Signup'), 3000 )
+  useEffect(() => {
+    const timer = setTimeout(() => navigation.navigate('Signup'), 3000)
   })
 
   return (
     <View style={styles.container}>
-      <Text>{ props.loadingText }</Text>
+      <Text style={styles.text}>{props.loadingText}</Text>
     </View>
   )
 }
@@ -26,4 +26,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#3E3364',
     minHeight: 150,
   },
+  text: {
+    color: 'white',
+    fontSize: 20,
+    textShadowOffset: { width: 2, height: 2 },
+      textShadowRadius : 5
+
+ },
 })
