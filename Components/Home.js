@@ -6,6 +6,7 @@ import {Agenda} from 'react-native-calendars';
 import {Card, Avatar} from 'react-native-paper';
 import TaskInputField from './TaskInputField';
 
+
 // firebase
 
 
@@ -133,7 +134,7 @@ const timeToString = (time) => {
   const renderItem = (item) => {
     return (
       <TouchableOpacity  style={{marginRight: 10, marginTop: 17} }
-      onPress={() => {navigation.navigate("AddTask")}}>
+      onPress={() => {navigation.navigate("#")}}>
         <Card>
           <Card.Content>
             <View
@@ -143,8 +144,7 @@ const timeToString = (time) => {
                 alignItems: 'center',
               }}>
               <Text>{item.name}</Text>
-              <TouchableOpacity onPress={() => navigation.navigate("EditTask")}><Avatar.Text label="x" /></TouchableOpacity>
-             
+              <TouchableOpacity onPress={() => navigation.navigate("#")}><Avatar.Text label="x" /></TouchableOpacity>
             </View>
           </Card.Content>
         </Card>
@@ -164,6 +164,7 @@ const timeToString = (time) => {
       />
       <TaskInputField addTask={addTask}/>
     </View>
+    
   );
 
   

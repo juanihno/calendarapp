@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet,Button, Text, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 
 // components
 import  Signup  from './Components/Signup';
@@ -10,6 +11,10 @@ import  { Home }  from './Components/Home';
 import  { Signout }  from './Components/Signout';
 import  AddTask  from './Components/AddTask';
 import  EditTask  from './Components/EditTask';
+import {Splash} from './Components/Splash'
+import {AddtaskButton} from './Components/AddtaskButton'
+
+
 
 
 
@@ -24,7 +29,9 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWith
 import { 
   initializeFirestore, 
   getFirestore, 
-  setDoc, 
+  setDoc,
+  getDocs,
+  getDoc, 
   doc, 
   addDoc, 
   collection,
@@ -57,7 +64,8 @@ function App(props) {
   const[ userId, setUserId ] = useState()
   const[ itemList, setItemList ] = useState()
 
-  
+  const navigation = useNavigation()
+
 
 
   useEffect(() => {
@@ -117,6 +125,11 @@ function App(props) {
     })
     .catch( (error) => console.log(error.code) )
   }
+  const gotoAddtasks = () => {
+    {navigation.navigate("AddTask")}
+    
+    }
+  
   const createUser = async ( collection , data ) => {
     //adding data to a collection with automatic id
     //const ref = await addDoc( collection(FSdb, FScollection ), data )
@@ -133,7 +146,7 @@ function App(props) {
   const createTask = async ( collection , data ) => {
     //adding data to a collection with automatic id
     //const ref = await addDoc( collection(FSdb, FScollection ), data )
-    const ref = await setDoc( doc( FSdb, `usertasks/${user.uid}/events/${ data.dateString }`), data )
+    const ref = await setDoc( doc( FSdb, `usertasks/${user.uid}/events/${data.dateString}/items/${new Date().getTime()}`), data )
     //console.log( ref.id )
   }
   /*const createTask = async (collection , data) => {
@@ -195,17 +208,24 @@ const getUserEvents = () => {
   // the id of the document is the date for the event
   eventData[ doc.id ] = arr
   console.log("testing array", arr)
+  console.log("testing eventdata", eventData)
 
   })
   // now we get the collection of events for each day
   let eventsOfTheDay = []
   const eventKeys = Object.keys( eventData )
+  console.log("event keys",eventKeys)
+  //const eventDate=(data.dateString)
   eventKeys.map( async (eventDate) => {
-  const events = await getDocs( FSdb, `users/${user.uid}/events/${eventDate}/dayEvents`)
+  const events = await getDocs( FSdb, `usertasks/${user.uid}/events/${eventDate}/items`)
   events.forEach( (doc) => {
+    console.log("events is", doc)
+
   let event = doc.data()
   event.id = doc.id
   eventsOfTheDay.push( event )
+  console.log("testing eventsoftheday", eventsOfTheDay)
+
   })
   
   eventData[ eventDate ] = eventsOfTheDay
@@ -220,7 +240,11 @@ const getUserEvents = () => {
   
 
   return (
+
     <Stack.Navigator >
+    <Stack.Screen name="Splash">
+          { (props) => <Splash {...props} loadingText="Welcome to MycalendarApp" /> }
+        </Stack.Screen>
       <Stack.Screen name="Signup" options={{title: 'Sign up'}}>
           { (props) => 
           <Signup {...props} 
@@ -244,7 +268,11 @@ const getUserEvents = () => {
         </Stack.Screen>
         <Stack.Screen name="Home" options={{
           headerTitle: "Home",
-          headerRight: (props) => <Signout {...props} handler={SignoutHandler} />
+          headerTitleStyle: { 
+           headerTitleAlign: 'center',},
+          headerRight: (props) => <Signout {...props} handler={SignoutHandler} />,
+          headerLeft: (props) => <AddtaskButton {...props} handler={gotoAddtasks} />
+
         }}>
           { (props) => 
           <Home {...props} auth={auth} add={createTask} user={user} itemList={itemList} /> }
@@ -265,7 +293,9 @@ const getUserEvents = () => {
           <EditTask {...props} auth={auth} /> }
         </Stack.Screen>
         
+        
     </Stack.Navigator>
+
   );
 }
 
