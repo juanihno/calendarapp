@@ -49,16 +49,17 @@ export function Home(props) {
 
 
   const [dateString, setDateString] = useState();
+  
   //const [items, setItems] = useState({});
   //setItems(props.listItems)
 
   const items = {
 
-    '2017-05-20': [{ name: 'Meetin Juan' }, { name: 'any js object' }],
+    '2021-05-21': [{ name: 'Meetin Juan' }, { name: 'any js object' }],
 
-    '2017-05-23': [{ name: 'Ana Bday', height: 80 }, { name: 'Soccer match' }],
-    '2017-05-24': [{ name: 'Dani bday' }],
-    '2017-05-25': [{ name: 'Go for a run' }, { name: 'Cheescake' }, { name: 'Hala Madrid' }],
+    '2021-05-22': [{ name: 'Ana Bday', height: 80 }, { name: 'Soccer match' }],
+    '2021-05-23': [{ name: 'Dani bday' }],
+    '2021-05-24': [{ name: 'Go for a run' }, { name: 'Cheescake' }, { name: 'Hala Madrid' }],
 
   };
 
@@ -155,7 +156,7 @@ export function Home(props) {
   return (
     <View style={{ flex: 1 }}>
       <Agenda
-        onDayPress={(day) => { setDateString(day.dateString); console.log(dateString) }}
+        onDayPress={(day) => { setDateString(day.dateString); console.log(day.dateString) }}
         // Initially selected day
         selected={'2021-05-21'}
         // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined

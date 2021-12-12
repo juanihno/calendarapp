@@ -217,12 +217,18 @@ function App(props) {
       console.log("event keys", eventKeys)
       //const eventDate=(data.dateString)
       eventKeys.map(async (eventDate) => {
-        const events = await getDocs(FSdb, `usertasks/${user.uid}/events/${eventDate}/items`)
+        const events = await getDocs(
+          collection(FSdb, `users/${user.uid}/events/${eventDate}/items`)
+        );
+        console.log("events is", events)
+
         events.forEach((doc) => {
           console.log("events is", doc)
 
           let event = doc.data()
           event.id = doc.id
+          console.log("events is", event)
+
           eventsOfTheDay.push(event)
           console.log("testing eventsoftheday", eventsOfTheDay)
 
@@ -268,9 +274,7 @@ function App(props) {
       </Stack.Screen>
       <Stack.Screen name="Home" options={{
         headerTitle: "Home",
-        headerTitleStyle: {
-          headerTitleAlign: 'center',
-        },
+        
         headerRight: (props) => <Signout {...props} handler={SignoutHandler} />,
         headerLeft: (props) => <AddtaskButton {...props} handler={gotoAddtasks} />
 
